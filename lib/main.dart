@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'animation_page.dart';
 import 'gesture_page.dart';
+import 'image_widget_page.dart';
 import 'imge_page.dart';
 import 'launcher_page.dart';
 import 'other_page.dart';
@@ -24,6 +26,8 @@ class MyApp extends StatelessWidget {
         'gesture':(BuildContext context)=>GesturePage(),
         'image':(BuildContext context)=>ImagePage(),
         'launcher':(BuildContext context)=>LauncherPage(),
+        'imagedemo':(BuildContext context)=>ImageDemo(),
+        'animation':(BuildContext context)=>AnimationPage(),
       } ,
     );
   }
@@ -63,6 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
             _itemt('跳转手势页面',GesturePage(),'gesture'),
             _itemt('跳转图片引用页面',ImagePage(),'image'),
             _itemt('跳转打开应用页面',LauncherPage(),'launcher'),
+            _itemt('跳转Image应用页面',ImageDemo(),'imagedemo'),
+            _itemt('跳转Animation应用页面',AnimationPage(),'animation'),
           ],
         ),
       ),
