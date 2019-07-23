@@ -73,9 +73,12 @@ class _TakePhotoPageState extends State<TakePhotoPage> {
     return _images.map((file){
       return Stack(
         children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.file(file,width: 120,height: 90,fit: BoxFit.fill,),
+          Container(
+              child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: Image.file(file,width: 120,height: 90,fit: BoxFit.fill,),
+              ),
           ),
           Positioned(
             right:5,
