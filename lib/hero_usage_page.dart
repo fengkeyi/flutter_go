@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
 import 'dart:math' as math;
 
 class HeroHigh extends StatelessWidget {
@@ -8,7 +9,7 @@ class HeroHigh extends StatelessWidget {
       const Interval(0.0, 0.75, curve: Curves.fastOutSlowIn);
 
   static RectTween _createRectTween(Rect begin, Rect end) {
-    return MaterialRectArcTween(begin: begin, end: end);
+    return MaterialRectCenterArcTween(begin: begin, end: end);
   }
 
   static Widget _buildPage(
@@ -22,16 +23,19 @@ class HeroHigh extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               SizedBox(
-                width: 2 * kMaxRadius,
-                height: 2 * kMaxRadius,
+                width: 2.0 * kMaxRadius,
+                height: 2.0 * kMaxRadius,
                 child: Hero(
+                  createRectTween: _createRectTween,
                     tag: photoName,
-                    child: Photo(
+                    child: RadiaExpansion(
+                      maxRadius: kMaxRadius,
+                        child:Photo(
                       photo: photoName,
                       onTap: () {
                         Navigator.of(context).pop();
                       },
-                    )),
+                    ))),
               ),
               Text(
                 descriptioin,
@@ -54,6 +58,7 @@ class HeroHigh extends StatelessWidget {
       width: kMinRadius * 2,
       height: kMinRadius * 2,
       child: Hero(
+        createRectTween: _createRectTween,
         tag: photoName,
         child: RadiaExpansion(
           maxRadius: kMaxRadius,
@@ -83,6 +88,9 @@ class HeroHigh extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    timeDilation = 10.0;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Radial Transition Dmeo'),
