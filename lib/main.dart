@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'animation_page.dart';
 import 'gesture_page.dart';
 import 'hero_page.dart';
+import 'hero_usage_page.dart';
 import 'image_widget_page.dart';
 import 'imge_page.dart';
 import 'launcher_page.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         'imagedemo':(BuildContext context)=>ImageDemo(),
         'animation':(BuildContext context)=>AnimationPage(),
         'hero':(BuildContext context)=>HeroPage(),
+        'radialhero':(BuildContext context)=>HeroHigh(),
       } ,
     );
   }
@@ -72,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _itemt('跳转Image应用页面',ImageDemo(),'imagedemo'),
             _itemt('跳转Animation应用页面',AnimationPage(),'animation'),
             _itemt('跳转Hero应用页面',HeroPage(),'hero'),
+            _itemt('跳转RadialHero应用页面',HeroHigh(),'radialhero'),
           ],
         ),
       ),
