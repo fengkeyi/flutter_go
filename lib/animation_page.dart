@@ -4,11 +4,63 @@ import 'package:flutter/material.dart';
 class AnimationPage extends StatefulWidget {
   AnimationPage({Key key, this.title}) : super(key: key);
 
-
   final String title;
 
   @override
   _AnimationPageState createState() => _AnimationPageState();
+}
+
+/**
+ * animation 2
+ */
+class AnimatedLogo extends AnimatedWidget {
+
+  AnimatedLogo({Key key,Animation<double> animation})
+      :super(key:key,listenable:animation);
+
+    @override
+  Widget build(BuildContext context) {
+    final Animation<double> animation = listenable;
+    return Center(
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: 10),
+          width: animation.value,
+          height: animation.value,
+          child: FlutterLogo(),
+        ),
+    );
+  }
+}
+
+class LogoWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: FlutterLogo(),
+    );
+  }
+}
+
+class GrowTransitioin extends StatelessWidget {
+
+  GrowTransitioin({this.child,this.animation});
+
+  final Widget child;
+  final Animation<double> animation;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: AnimatedBuilder(animation: animation,
+          builder: (context,child)=>Container(
+            width: animation.value,
+            height: animation.value,
+            child: child,
+          ),
+      child: child,),
+    );
+  }
 }
 
 class _AnimationPageState extends State<AnimationPage> with SingleTickerProviderStateMixin {
@@ -35,6 +87,8 @@ class _AnimationPageState extends State<AnimationPage> with SingleTickerProvider
         animationStatus = status;
       });
     });
+    controller.forward();
+
   }
 
   @override
@@ -56,7 +110,10 @@ class _AnimationPageState extends State<AnimationPage> with SingleTickerProvider
           child: Icon(Icons.arrow_back),
         ),
       ),
-      body: Column(
+      body:
+      GrowTransitioin(child: LogoWidget(),animation: animation,)
+      /*AnimatedLogo(animation: animation,),*/
+      /*Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -80,7 +137,7 @@ class _AnimationPageState extends State<AnimationPage> with SingleTickerProvider
           ),
 
         ],
-      )
+      )*/
     );
   }
 }
