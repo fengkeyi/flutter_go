@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'animation_page.dart';
 import 'chapter5/navigator/tab_navigationbar.dart';
+import 'chapter6/http_json_page.dart';
+import 'chapter6/share_preference.dart';
 import 'gesture_page.dart';
 import 'hero_page.dart';
 import 'hero_usage_page.dart';
@@ -34,6 +36,8 @@ class MyApp extends StatelessWidget {
         'hero':(BuildContext context)=>HeroPage(),
         'radialhero':(BuildContext context)=>HeroHigh(),
         'navigationbar':(BuildContext context)=>NavigationBarPage(),
+        'http':(BuildContext context)=>HttpDemo(),
+        'sp':(BuildContext context)=>SharedPreferenceDemo(),
       } ,
     );
   }
@@ -78,6 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
             _itemt('跳转Hero应用页面',HeroPage(),'hero'),
             _itemt('跳转RadialHero应用页面',HeroHigh(),'radialhero'),
             _itemt('跳转NavigationBar应用页面',NavigationBarPage(),'navigationbar'),
+            _itemt('跳转Http应用页面',HttpDemo(),'http'),
+            _itemt('跳转SharedPreferenceDemo应用页面',SharedPreferenceDemo(),'sp'),
           ],
         ),
       ),
