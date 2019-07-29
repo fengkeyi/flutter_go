@@ -4,6 +4,10 @@ import 'animation_page.dart';
 import 'chapter5/navigator/tab_navigationbar.dart';
 import 'chapter6/http_json_page.dart';
 import 'chapter6/share_preference.dart';
+import 'chapter7/gridview_demo_page.dart';
+import 'chapter7/list_expansiontile_demo_page.dart';
+import 'chapter7/listview_demo_page.dart';
+import 'chapter7/listview_horizontal_demo_page.dart';
 import 'gesture_page.dart';
 import 'hero_page.dart';
 import 'hero_usage_page.dart';
@@ -38,6 +42,10 @@ class MyApp extends StatelessWidget {
         'navigationbar':(BuildContext context)=>NavigationBarPage(),
         'http':(BuildContext context)=>HttpDemo(),
         'sp':(BuildContext context)=>SharedPreferenceDemo(),
+        'ListViewDemo':(BuildContext context)=>ListViewDemo(),
+        'ListViewHorizontalDemo':(BuildContext context)=>ListViewHorizontalDemo(),
+        'ExpansiontileViewDemo':(BuildContext context)=>ExpansiontileViewDemo(),
+        'GridViewDemo':(BuildContext context)=>GridViewDemo(),
       } ,
     );
   }
@@ -64,8 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: <Widget>[
             SwitchListTile(value: byName, onChanged: (value){
               setState(() {
@@ -84,6 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
             _itemt('跳转NavigationBar应用页面',NavigationBarPage(),'navigationbar'),
             _itemt('跳转Http应用页面',HttpDemo(),'http'),
             _itemt('跳转SharedPreferenceDemo应用页面',SharedPreferenceDemo(),'sp'),
+            _itemt('跳转ListViewDemo应用页面',ListViewDemo(),'ListViewDemo'),
+            _itemt('跳转ListViewHorizontalDemo应用页面',ListViewHorizontalDemo(),'ListViewHorizontalDemo'),
+            _itemt('跳转ExpansiontileViewDemo应用页面',ExpansiontileViewDemo(),'ExpansiontileViewDemo'),
+            _itemt('跳转GridViewDemo应用页面',GridViewDemo(),'GridViewDemo'),
           ],
         ),
       ),
