@@ -1,12 +1,4 @@
-//String startColor	String	NonNull
-import 'package:flutter_go/chapter5/model/CommonModel.dart';
-
-////String endColor	String	NonNull
-////CommonModel mainItem	Object	NonNull
-////CommonModel item1	Object	NonNull
-////CommonModel item2	Object	NonNull
-////CommonModel item3	Object	NonNull
-////CommonModel item4	Object	NonNull
+import 'package:flutter_go/chapter5/model/common_model.dart';
 
 class GridItem{
   final String startColor;
@@ -20,6 +12,7 @@ class GridItem{
   GridItem({this.startColor, this.endColor, this.mainItem, this.item1, this.item2, this.item3, this.item4});
 
   factory GridItem.fromJson(Map<String,dynamic> map){
+    print('GridItem get $map');
     return GridItem(startColor: map['startColor'],
     endColor: map['endColor'],
     mainItem: CommonModel.fromJson(map['mainItem']),
@@ -30,6 +23,16 @@ class GridItem{
     );
   }
 
-
+  Map<String,dynamic> toJson(){
+    Map<String,dynamic> data = Map<String,dynamic>();
+    data['startColor']=startColor;
+    data['endColor']=endColor;
+    data['mainItem']=mainItem.toJson();
+    data['item1']=item1.toJson();
+    data['item2']=item2.toJson();
+    data['item3']=item3.toJson();
+    data['item4']=item4.toJson();
+    return data;
+  }
 
 }

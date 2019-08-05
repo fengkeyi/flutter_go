@@ -1,6 +1,4 @@
-
-
-import 'package:flutter_go/chapter5/model/CommonModel.dart';
+import 'package:flutter_go/chapter5/model/common_model.dart';
 
 class SalesBoxModel {
   final String icon;
@@ -23,6 +21,7 @@ class SalesBoxModel {
       this.smallCard4});
 
   factory SalesBoxModel.fromJson(Map<String, dynamic> map) {
+    print('SalesBoxModel get $map');
     return SalesBoxModel(
       icon: map['icon'],
       moreUrl: map['moreUrl'],
@@ -33,5 +32,18 @@ class SalesBoxModel {
       smallCard3: CommonModel.fromJson(map['smallCard3']),
       smallCard4: CommonModel.fromJson(map['smallCard4']),
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> data = Map<String, dynamic>();
+    data['icon'] = icon;
+    data['moreUrl'] = moreUrl;
+    data['bigCard1'] = bigCard1.toJson();
+    data['bigCard2'] = bigCard2.toJson();
+    data['smallCard1'] = smallCard1.toJson();
+    data['smallCard2'] = smallCard2.toJson();
+    data['smallCard3'] = smallCard3.toJson();
+    data['smallCard4'] = smallCard4.toJson();
+    return data;
   }
 }

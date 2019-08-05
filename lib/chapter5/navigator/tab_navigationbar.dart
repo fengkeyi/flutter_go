@@ -13,7 +13,7 @@ class NavigationBarPage extends StatefulWidget {
 class _NavigationBarPageState extends State<NavigationBarPage> {
 
   PageController _pageController;
-  int _currentIndex = 1;
+  int _currentIndex = 0;
 
 
   @override
