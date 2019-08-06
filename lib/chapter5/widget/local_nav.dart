@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_go/chapter5/model/common_model.dart';
+import 'package:flutter_go/chapter5/widget/webview.dart';
 
 class LocalNavWidget extends StatelessWidget {
   final List<CommonModel> localNavList;
@@ -17,16 +18,16 @@ class LocalNavWidget extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.all(7),
-        child: _items(),
+        child: _items(context),
       ),
     );
   }
 
-  Widget _items() {
+  Widget _items(BuildContext context) {
     if (localNavList == null) return null;
     List<Widget> widgets = [];
     localNavList.forEach((model) {
-      widgets.add(_item(model));
+      widgets.add(_item(context,model));
     });
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,10 +35,12 @@ class LocalNavWidget extends StatelessWidget {
     );
   }
 
-  Widget _item(CommonModel model) {
+  Widget _item(BuildContext context,CommonModel model) {
     return GestureDetector(
       onTap: () {
-
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return WebView(url: model.url,title: model.title,hideAppBar: model.hideAppBar,);
+        }));
       },
       child: Column(children: [
         Image.network(
