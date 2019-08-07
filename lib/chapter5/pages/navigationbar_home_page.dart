@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_go/chapter5/dao/home_dao.dart';
 import 'package:flutter_go/chapter5/model/home_model.dart';
+import 'package:flutter_go/chapter5/widget/grid_nav.dart';
 import 'package:flutter_go/chapter5/widget/local_nav.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
@@ -66,10 +67,19 @@ class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
-                    child: _homeModel!=null?LocalNavWidget(
-                      localNavList: _homeModel.localNavList,
-                    ):Container(
-                      height: 64,
+                    child: _homeModel != null
+                        ? LocalNavWidget(
+                            localNavList: _homeModel.localNavList,
+                          )
+                        : Container(
+                            height: 64,
+                          ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
+                    child: GridNavView(
+                      gridNavModel:
+                          _homeModel == null ? null : _homeModel.gridNav,
                     ),
                   ),
                   Container(
