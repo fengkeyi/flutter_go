@@ -5,6 +5,7 @@ import 'package:flutter_go/chapter5/widget/grid_nav.dart';
 import 'package:flutter_go/chapter5/widget/loading_container.dart';
 import 'package:flutter_go/chapter5/widget/local_nav.dart';
 import 'package:flutter_go/chapter5/widget/sales_box.dart';
+import 'package:flutter_go/chapter5/widget/webview.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 class NavigationBarHomePage extends StatefulWidget {
@@ -88,9 +89,20 @@ class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
               pagination: SwiperPagination(),
               controller: SwiperController(),
               itemBuilder: (context, index) {
-                return Image.network(
-                  _homeModel.bannerList[index].icon,
-                  fit: BoxFit.fill,
+                return GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return WebView(
+                        url: _homeModel.bannerList[index].url,
+                        statusBarColor: _homeModel.bannerList[index].statusBarColor,
+                        hideAppBar: true,
+                      );
+                    }));
+                  },
+                  child: Image.network(
+                    _homeModel.bannerList[index].icon,
+                    fit: BoxFit.fill,
+                  ),
                 );
               },
             ),
@@ -125,7 +137,6 @@ class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
   bool _onNotification(Notification notification) {
     if (notification is ScrollUpdateNotification && notification.depth == 0) {
       double alpha = notification.metrics.pixels / APPBAR_MAX_SCROLL_LEN;
-      print(_appBarAlpha);
       setState(() {
         _appBarAlpha = alpha < 0 ? 0 : (alpha > 1 ? 1 : alpha);
       });
