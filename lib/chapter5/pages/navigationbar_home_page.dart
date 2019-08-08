@@ -3,6 +3,7 @@ import 'package:flutter_go/chapter5/dao/home_dao.dart';
 import 'package:flutter_go/chapter5/model/home_model.dart';
 import 'package:flutter_go/chapter5/widget/grid_nav.dart';
 import 'package:flutter_go/chapter5/widget/local_nav.dart';
+import 'package:flutter_go/chapter5/widget/sales_box.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 class NavigationBarHomePage extends StatefulWidget {
@@ -12,7 +13,7 @@ class NavigationBarHomePage extends StatefulWidget {
 
 class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
   List<String> _images = [
-    "https://img04.sogoucdn.com/app/a/100520093/c583df4cdb382aff-50aefb79b44e9cc2-dc8275ee979b40e648fecb4d6d3ffcbb.jpg",
+    "https://desk-fd.zol-img.com.cn/t_s208x130c5/g4/M01/04/09/Cg-4y1TthaKILoSaACCX4-br1qAAAVgtQHS6Z0AIJf7476.jpg",
     "https://img04.sogoucdn.com/app/a/100520093/e7d4cac126941b5a-396dcc73e3007ef8-ed5fadd3bf0ae241d3f2fd3371f0b535.jpg",
     "https://img03.sogoucdn.com/app/a/100520093/61782be166c826c8-653ea5468e5789eb-6fe1b4d36104bebb2ca90dd2f5b8d75a.jpg",
     "https://i02piccdn.sogoucdn.com/0183cc6a19ec4363",
@@ -48,46 +49,7 @@ class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
             removeTop: true,
             child: NotificationListener(
               onNotification: _onNotification,
-              child: ListView(
-                children: <Widget>[
-                  Container(
-                    height: 180,
-                    child: Swiper(
-                      itemCount: _images.length,
-                      autoplay: true,
-                      pagination: SwiperPagination(),
-                      controller: SwiperController(),
-                      itemBuilder: (context, index) {
-                        return Image.network(
-                          _images[index],
-                          fit: BoxFit.fill,
-                        );
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
-                    child: _homeModel != null
-                        ? LocalNavWidget(
-                            localNavList: _homeModel.localNavList,
-                          )
-                        : Container(
-                            height: 64,
-                          ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
-                    child: GridNavView(
-                      gridNavModel:
-                          _homeModel == null ? null : _homeModel.gridNav,
-                    ),
-                  ),
-                  Container(
-                    height: 800,
-                    child: Text('HOME PAGE'),
-                  ),
-                ],
-              ),
+              child: _listView
             ),
           ),
           Opacity(
@@ -106,6 +68,55 @@ class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget get _banner{
+    return Container(
+      height: 180,
+      child: Swiper(
+        itemCount: _images.length,
+        autoplay: true,
+        pagination: SwiperPagination(),
+        controller: SwiperController(),
+        itemBuilder: (context, index) {
+          return Image.network(
+            _images[index],
+            fit: BoxFit.fill,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget get _listView{
+    return ListView(
+      children: <Widget>[
+        _banner,
+        Padding(
+          padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
+          child: _homeModel != null
+              ? LocalNavWidget(
+            localNavList: _homeModel.localNavList,
+          )
+              : Container(
+            height: 64,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
+          child: GridNavView(
+            gridNavModel:
+            _homeModel == null ? null : _homeModel.gridNav,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
+          child: SalesBoxView(
+            salesBoxModel: _homeModel?.salesBox,
+          ),
+        ),
+      ],
     );
   }
 
