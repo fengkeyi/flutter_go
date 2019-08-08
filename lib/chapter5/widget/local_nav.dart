@@ -24,8 +24,8 @@ class LocalNavWidget extends StatelessWidget {
   }
 
   Widget _items(BuildContext context) {
-    if (localNavList == null) return null;
     List<Widget> widgets = [];
+    if (localNavList == null) return null;
     localNavList.forEach((model) {
       widgets.add(_item(context,model));
     });

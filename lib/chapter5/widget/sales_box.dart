@@ -19,8 +19,8 @@ class SalesBoxView extends StatelessWidget {
   }
 
   List<Widget> _items(BuildContext context) {
-    if(salesBoxModel==null) return null;
     List<Widget> items = [];
+    if(salesBoxModel==null) return items;
     items.add(_buildSalesBoxbar(context));
     items.add(_buildDoubleItems(
         context, salesBoxModel.bigCard1, salesBoxModel.bigCard2, true, false));
