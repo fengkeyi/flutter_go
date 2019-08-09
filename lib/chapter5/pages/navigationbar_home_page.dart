@@ -5,8 +5,11 @@ import 'package:flutter_go/chapter5/widget/grid_nav.dart';
 import 'package:flutter_go/chapter5/widget/loading_container.dart';
 import 'package:flutter_go/chapter5/widget/local_nav.dart';
 import 'package:flutter_go/chapter5/widget/sales_box.dart';
+import 'package:flutter_go/chapter5/widget/search_bar.dart';
 import 'package:flutter_go/chapter5/widget/webview.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+
+const SEARCH_BAR_DEFAULT_TEXT = '网红打卡地 景点 酒店 美食';
 
 class NavigationBarHomePage extends StatefulWidget {
   @override
@@ -66,9 +69,15 @@ class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
               padding: EdgeInsets.only(top: 20),
               decoration: BoxDecoration(color: Colors.white),
               child: Center(
-                child: Text(
-                  '首页',
-                  style: TextStyle(fontSize: 15),
+                child: SearchBar(
+                  barType: _appBarAlpha > 0.2
+                      ? SearchBarType.homeLight
+                      : SearchBarType.home,
+                  inputBoxClick: _jumpToSearch,
+                  speakClick: _jumpToSpeak,
+                  defaultText: SEARCH_BAR_DEFAULT_TEXT,
+                  hintText: SEARCH_BAR_DEFAULT_TEXT,
+                  leftButtonClick: () {},
                 ),
               ),
             ),
@@ -90,11 +99,13 @@ class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
               controller: SwiperController(),
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
                       return WebView(
                         url: _homeModel.bannerList[index].url,
-                        statusBarColor: _homeModel.bannerList[index].statusBarColor,
+                        statusBarColor:
+                            _homeModel.bannerList[index].statusBarColor,
                         hideAppBar: true,
                       );
                     }));
@@ -142,4 +153,8 @@ class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
       });
     }
   }
+
+  _jumpToSearch() {}
+
+  _jumpToSpeak() {}
 }
