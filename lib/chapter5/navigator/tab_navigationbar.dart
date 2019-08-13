@@ -39,7 +39,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
         },
         children: <Widget>[
           NavigationBarHomePage(),
-          NavigationBarSearchPage(),
+          NavigationBarSearchPage(hideLeft: true,),
           NavigationBarTravelPage(),
           NavigationBarMyPage(),
         ],

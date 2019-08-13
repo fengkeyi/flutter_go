@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-
 class SecondPage extends StatefulWidget {
   SecondPage({Key key, this.title}) : super(key: key);
-
 
   final String title;
 
@@ -30,7 +28,29 @@ class _SecondPage extends State<SecondPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('SECOND  PAGE'
+            Container(
+              height: 130,
+              width: 200,
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+              ),
+              child: PhysicalShape(
+                  clipper: ShapeBorderClipper(
+                      shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30)))),
+                  color: Colors.black,
+                child: FlatButton(onPressed: (){}, child: Text('132465',style: TextStyle(color: Colors.white),)),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              color: Colors.grey,
+              width: 50,
+              height: 50,
+              child: RawMaterialButton(onPressed: (){},
+
+                child: Text('RawMaterialButton'),
+              ),
             ),
             Text(
               'You have pushed the button this many times:',

@@ -9,6 +9,8 @@ import 'package:flutter_go/chapter5/widget/search_bar.dart';
 import 'package:flutter_go/chapter5/widget/webview.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
+import 'navigationbar_search_page.dart';
+
 const SEARCH_BAR_DEFAULT_TEXT = '网红打卡地 景点 酒店 美食';
 
 class NavigationBarHomePage extends StatefulWidget {
@@ -62,26 +64,7 @@ class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
               ),
             ),
           ),
-          Opacity(
-            opacity: _appBarAlpha,
-            child: Container(
-              height: 80,
-              padding: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(color: Colors.white),
-              child: Center(
-                child: SearchBar(
-                  barType: _appBarAlpha > 0.2
-                      ? SearchBarType.homeLight
-                      : SearchBarType.home,
-                  inputBoxClick: _jumpToSearch,
-                  speakClick: _jumpToSpeak,
-                  defaultText: SEARCH_BAR_DEFAULT_TEXT,
-                  hintText: SEARCH_BAR_DEFAULT_TEXT,
-                  leftButtonClick: () {},
-                ),
-              ),
-            ),
-          ),
+          _appBar(),
         ],
       ),
     );
@@ -154,7 +137,50 @@ class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
     }
   }
 
-  _jumpToSearch() {}
+  _appBar(){
+  return  Column(
+    children: <Widget>[
+      Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            //AppBar渐变遮罩背景
+            colors: [Color(0x66000000), Colors.transparent],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Container(
+          padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+          height: 80.0,
+          decoration: BoxDecoration(
+            color: Color.fromARGB((_appBarAlpha * 255).toInt(), 255, 255, 255),
+          ),
+          child: SearchBar(
+            searchBarType: _appBarAlpha > 0.2
+                ? SearchBarType.homeLight
+                : SearchBarType.home,
+            inputBoxClick: _jumpToSearch,
+            speakClick: _jumpToSpeak,
+            defaultText: SEARCH_BAR_DEFAULT_TEXT,
+            leftButtonClick: () {},
+          ),
+        ),
+      ),
+      Container(
+          height: _appBarAlpha > 0.2 ? 0.5 : 0,
+          decoration: BoxDecoration(
+              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 0.5)]))
+    ],
+  );
+  }
+
+  _jumpToSearch() {
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return NavigationBarSearchPage(
+        hint: SEARCH_BAR_DEFAULT_TEXT,
+      );
+    }));
+  }
 
   _jumpToSpeak() {}
 }
