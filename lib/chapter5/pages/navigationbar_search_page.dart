@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_go/chapter5/dao/search_dao.dart';
 import 'package:flutter_go/chapter5/model/search_model.dart';
+import 'package:flutter_go/chapter5/pages/navigation_speak_page.dart';
 import 'package:flutter_go/chapter5/widget/search_bar.dart';
 import 'package:flutter_go/chapter5/widget/webview.dart';
 
@@ -146,7 +147,11 @@ class _NavigationBarSearchPageState extends State<NavigationBarSearchPage> {
     );
   }
 
-  _jumpToSpeak() {}
+  _jumpToSpeak() {
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return SpeakPage();
+    }));
+  }
 
   _onTextChange(String text) {
     _keyword = text;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_go/chapter5/dao/home_dao.dart';
 import 'package:flutter_go/chapter5/model/home_model.dart';
+import 'package:flutter_go/chapter5/pages/navigation_speak_page.dart';
 import 'package:flutter_go/chapter5/widget/grid_nav.dart';
 import 'package:flutter_go/chapter5/widget/loading_container.dart';
 import 'package:flutter_go/chapter5/widget/local_nav.dart';
@@ -182,5 +183,9 @@ class _NavigationBarHomePageState extends State<NavigationBarHomePage> {
     }));
   }
 
-  _jumpToSpeak() {}
+  _jumpToSpeak() {
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return SpeakPage();
+    }));
+  }
 }
