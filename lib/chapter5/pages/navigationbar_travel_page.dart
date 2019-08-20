@@ -10,7 +10,7 @@ class NavigationBarTravelPage extends StatefulWidget {
 }
 
 class _NavigationBarTravelPageState extends State<NavigationBarTravelPage>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin  {
   TabController _controller;
   List<TravelTab> tabs = [];
   TravelTabModel _model;
@@ -55,7 +55,7 @@ class _NavigationBarTravelPageState extends State<NavigationBarTravelPage>
                   insets: EdgeInsets.only(bottom: 10),
                 ),
                 tabs: tabs.map((TravelTab tab) {
-                  return Text(tab.labelName);
+                  return Tab(text:tab.labelName);
                 }).toList()),
           ),
           Flexible(
