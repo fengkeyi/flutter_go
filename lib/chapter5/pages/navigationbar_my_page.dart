@@ -6,11 +6,11 @@ class NavigationBarMyPage extends StatefulWidget {
   _NavigationBarMyPageState createState() => _NavigationBarMyPageState();
 }
 
-class _NavigationBarMyPageState extends State<NavigationBarMyPage>{
+class _NavigationBarMyPageState extends State<NavigationBarMyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:WebView(
+      body: WebView(
         url: 'https://m.ctrip.com/webapp/myctrip/',
         hideAppBar: true,
         backForbid: true,
@@ -18,5 +18,4 @@ class _NavigationBarMyPageState extends State<NavigationBarMyPage>{
       ),
     );
   }
-
 }
