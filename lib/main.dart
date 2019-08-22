@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_splash_screen/flutter_splash_screen.dart';
+
 import 'animation_page.dart';
 import 'chapter5/navigator/tab_navigationbar.dart';
 import 'chapter6/http_json_page.dart';
@@ -21,6 +23,7 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,6 +67,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   bool byName = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 1500),(){
+        FlutterSplashScreen.hide();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
