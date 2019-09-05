@@ -16,6 +16,7 @@ import 'hero_usage_page.dart';
 import 'image_widget_page.dart';
 import 'imge_page.dart';
 import 'launcher_page.dart';
+import 'learn/flare_view.dart';
 import 'other_page.dart';
 import 'second_page.dart';
 
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: '页面跳转Demo'),
       routes: <String,WidgetBuilder>{
         'other':(BuildContext context)=>OtherPage(),
+        'FlareView':(BuildContext context)=>FlareView(),
         'second':(BuildContext context)=>SecondPage(),
         'gesture':(BuildContext context)=>GesturePage(),
         'image':(BuildContext context)=>ImagePage(),
@@ -90,6 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 byName = value;
               });
         },),
+            _itemt('跳转FlareView页面',FlareView(),'FlareView'),
             _itemt('跳转第一个页面',OtherPage(),'other'),
             _itemt('跳转第二个页面',SecondPage(),'second'),
             _itemt('跳转手势页面',GesturePage(),'gesture'),
