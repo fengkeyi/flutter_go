@@ -11,17 +11,19 @@ class FlareView extends StatefulWidget {
 }
 
 class _FlareViewState extends State<FlareView> {
-
-  String _animation = 'success';
+  String _animation = 'Untitled';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('FlareView'),
+      ),
       body: Center(
-        child:GestureDetector(
-          onTap: (){
+        child: GestureDetector(
+          onTap: () {
             setState(() {
-              switch(_animation){
+              switch (_animation) {
                 case 'success':
                   _animation = 'fail';
                   break;
@@ -40,10 +42,12 @@ class _FlareViewState extends State<FlareView> {
               }
             });
           },
-        child: new FlareActor("flrs/teddy.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:_animation),
+          child: new FlareActor("flrs/success.flr",
+              alignment: Alignment.center,
+              fit: BoxFit.contain,
+              animation: _animation),
         ),
       ),
     );
   }
 }
-
