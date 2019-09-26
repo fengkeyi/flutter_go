@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_go/generated/i18n.dart';
 
 class SecondPage extends StatefulWidget {
@@ -17,6 +18,21 @@ class _SecondPage extends State<SecondPage> {
     setState(() {
       _counter++;
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown,DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight]);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   }
 
   @override
