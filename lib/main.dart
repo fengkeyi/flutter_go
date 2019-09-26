@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 
@@ -10,6 +11,7 @@ import 'chapter7/gridview_demo_page.dart';
 import 'chapter7/list_expansiontile_demo_page.dart';
 import 'chapter7/listview_demo_page.dart';
 import 'chapter7/listview_horizontal_demo_page.dart';
+import 'generated/i18n.dart';
 import 'gesture_page.dart';
 import 'hero_page.dart';
 import 'hero_usage_page.dart';
@@ -29,6 +31,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'flutter之旅',
+      supportedLocales: S.delegate.supportedLocales,
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

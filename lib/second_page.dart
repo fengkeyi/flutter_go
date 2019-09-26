@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_go/generated/i18n.dart';
 
 class SecondPage extends StatefulWidget {
   SecondPage({Key key, this.title}) : super(key: key);
@@ -48,10 +49,11 @@ class _SecondPage extends State<SecondPage> {
               width: 50,
               height: 50,
               child: RawMaterialButton(onPressed: (){},
-
                 child: Text('RawMaterialButton'),
               ),
             ),
+            Text(S.of(context).title)
+            ,
             Text(
               'You have pushed the button this many times:',
             ),
