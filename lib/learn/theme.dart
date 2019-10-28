@@ -2,6 +2,13 @@
 
   /// 主题生成工具
   /// https://rxlabz.github.io/panache_web/
+  ///
+  /// 调试工具.
+  /// Database
+  //Network
+  //Shared preferences
+  //Redux
+  /// https://flutter-debugger.blankapp.org/guide/#features
 
   final ThemeData myTheme = ThemeData(
     primarySwatch: Colors.blue,
